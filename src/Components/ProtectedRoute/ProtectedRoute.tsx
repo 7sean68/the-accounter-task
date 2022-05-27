@@ -1,6 +1,5 @@
-import { PropsWithChildren } from "react";
-import { Navigate, Route, RouteProps } from "react-router-dom";
-import { useSelector } from "../../Redux/hooks";
+import { Navigate } from "react-router-dom";
+import { useTypedSelector } from "../../Redux/hooks";
 
 
 interface Props {
@@ -9,7 +8,7 @@ interface Props {
 }
 
 export default function ProtectedRoute({ loginPage = false, children } : Props) {
-  const loggedIn = useSelector(state => Boolean(state.user.user));
+  const loggedIn = useTypedSelector(state => Boolean(state.user.user));
   return loggedIn !== loginPage ? (
     children
   ) : (
