@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { defaultBaseApi } from "../Apis/BaseApi";
 import RequestGroup from "../Apis/RequestGroup";
-import User from "../Types/User";
+import User, { LoginValues } from "../Types/User";
 
 const requestGroup = new RequestGroup();
 
@@ -9,11 +9,6 @@ interface UserState {
   loggingIn: boolean;
   loginError?: Error;
   user?: User;
-}
-
-interface LoginParams {
-  contact: string;
-  password: string;
 }
 
 const initialState: UserState = {
@@ -24,11 +19,8 @@ const initialState: UserState = {
 
 export const login = createAsyncThunk(
   "user/login",
-  async ({ contact, password }: LoginParams, thunkApi) : Promise<User> => {
-    const { access_token, ...user } = await requestGroup.postUserLogin(
-      contact,
-      password
-    );
+  async ({ remember, ...credentials }: LoginValues, thunkApi) : Promise<User> => {
+    const { access_token, ...user } = await requestGroup.postUserLogin(credentials);
     defaultBaseApi.authorise(access_token, () => {
       thunkApi.dispatch(userSlice.actions.logoutCompleted);
     });

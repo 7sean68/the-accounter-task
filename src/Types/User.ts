@@ -17,3 +17,12 @@ export default interface User {
 export interface LoginResponse extends User {
   access_token: string;
 }
+
+export interface LoginBody {
+  contact: string;
+  password: string;
+}
+
+export interface LoginValues extends LoginBody {
+  remember: boolean;
+}

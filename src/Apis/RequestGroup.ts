@@ -1,4 +1,5 @@
-import { LoginResponse } from "../Types/User";
+import Currency from "../Types/Currency";
+import { LoginBody, LoginResponse } from "../Types/User";
 import { defaultBaseApi } from "./BaseApi";
 
 class RequestGroup {
@@ -9,18 +10,15 @@ class RequestGroup {
     this.cancelTokenSource = defaultBaseApi.getCancelTokenSource();
   }
 
-  async postUserLogin(contact: string, password: string) {
-    const { data } = await defaultBaseApi.post<LoginResponse>("user-management/login/", {
-      contact,
-      password,
-    }, {
+  async postUserLogin(body: LoginBody) {
+    const { data } = await defaultBaseApi.post<LoginResponse>("user-management/login/", body, {
       cancelToken: this.cancelTokenSource.token
     });
     return data;
   }
 
   async getCurrencyList(companyId: number) {
-    const { data } = await defaultBaseApi.get(`base/currency/${companyId}`, {
+    const { data } = await defaultBaseApi.get<Currency[]>(`base/currency/${companyId}`, {
       cancelToken: this.cancelTokenSource.token,
     });
     return data;
