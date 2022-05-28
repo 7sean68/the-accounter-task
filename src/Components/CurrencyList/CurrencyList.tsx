@@ -13,13 +13,10 @@ interface Props {
 
 export default function CurrencyList({ className, companyId }: Props) {
   const requestGroup = useMemo(() => new RequestGroup(), []);
-  const currenciesPromise = useMemo(
-    () => {
-      requestGroup.cancelAndReuse("unmounting or companyId changed");
-      return requestGroup.getCurrencyList(companyId)
-    },
-    [requestGroup, companyId]
-  );
+  const currenciesPromise = useMemo(() => {
+    requestGroup.cancelAndReuse("unmounting or companyId changed");
+    return requestGroup.getCurrencyList(companyId);
+  }, [requestGroup, companyId]);
   const { data, loading } = useApi(currenciesPromise);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [searchText, setSearchText] = useState("");
@@ -45,9 +42,13 @@ export default function CurrencyList({ className, companyId }: Props) {
       <div className={classes.list}>
         {loading && <div className={classes.loading}>loading...</div>}
         {data
-          ?.filter((currency) =>
-            currency.name.toLowerCase().includes(searchText.toLocaleLowerCase())
-          )
+          ?.filter((currency) => {
+            const lowerCaseSearchText = searchText.toLowerCase();
+            return (
+              currency.name.toLowerCase().includes(lowerCaseSearchText) ||
+              currency.code.includes(lowerCaseSearchText)
+            );
+          })
           .map((currency, index) => (
             <CurrencyItem
               key={currency.id}
