@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from "react";
+import { Provider } from "react-redux";
+import store from "./Redux/store";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home, Login } from "./Pages";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Suspense fallback="loading...">
+          {/* Routes replace Switch in latest version https://reactrouter.com/docs/en/v6/upgrading/v5#upgrade-all-switch-elements-to-routes */}
+          <Routes>
+            <Route
+              path="/login"
+              element={
+                <ProtectedRoute loginPage>
+                  <Login />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
