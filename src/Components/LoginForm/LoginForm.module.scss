@@ -1,0 +1,109 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+
+  .innerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 80%;
+
+    .preHeader{
+      height: 19px;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #2D3748;
+      margin: 0 0 2px 0;
+    }
+
+    .header {
+      height: 35px;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 30px;
+      line-height: 35px;
+      color: #1A202C;
+      margin: 0 0 24px 0;
+    }
+
+    button {
+      height: 50px;
+      width: 347px;
+      max-width: 100%;
+      border-radius: 5px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      border: none;
+    }
+
+    .form {
+      display: contents;
+
+      .field {
+        margin-bottom: 11px;
+        max-width: 100%;
+      }
+
+      .rememberAndForgotWrapper {
+        margin: 17px 0 27px;
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        width: 100%;
+
+        .forgot {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 16px;
+          color: #2C5282;
+          text-decoration: none;
+        }
+      }
+
+      .login {
+        background-color: #04C35C;
+        margin-bottom: 15px;
+      }
+    }
+
+    .google {
+      background-color: #2D3748;
+
+      img {
+        margin-right: 11px;
+      }
+    }
+
+    .registerWrapper {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #616161;
+
+      .register {
+        color: #2C5282;
+        text-decoration: none;
+      }
+    }
+  }
+}
