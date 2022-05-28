@@ -68,7 +68,7 @@ export default function LoginForm({ className }: Props) {
           )}
         </Form>
         <button className={classes.google}>
-          <img src="/iconfinder_Google_1298745 1.svg" alt="google" />
+          <img src="./iconfinder_Google_1298745 1.svg" alt="google" />
           <span>Or sign-in with google</span>
         </button>
         <div className={classes.registerWrapper}>

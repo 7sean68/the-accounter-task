@@ -9,7 +9,7 @@ import "./App.css";
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Suspense fallback="loading...">
           {/* Routes replace Switch in latest version https://reactrouter.com/docs/en/v6/upgrading/v5#upgrade-all-switch-elements-to-routes */}
           <Routes>
