@@ -9,11 +9,18 @@ export default function useApi<T>(apiCall: Promise<T>) {
     setData(undefined);
     setLoading(true);
     setError(undefined);
-    apiCall.then((data) => {
-      setData(data);
-    }).catch((ex: AxiosError) => {
-      setError(ex);
-    })
+    apiCall
+      .then((data) => {
+        setData(data);
+        setError(undefined);
+      })
+      .catch((ex: AxiosError) => {
+        setError(ex);
+      })
+      .finally(() => {
+        setLoading(false);
+        setData(undefined);
+      });
   }, [apiCall]);
-  return [data, loading, error];
+  return { data, loading, error };
 }
