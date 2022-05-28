@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/the-accounter-task/static/css/main.073c9b0a.css",
-    "main.js": "/the-accounter-task/static/js/main.2ac1c6db.js",
+    "main.js": "/the-accounter-task/static/js/main.5fb729c5.js",
     "static/css/677.8b5dd23e.chunk.css": "/the-accounter-task/static/css/677.8b5dd23e.chunk.css",
-    "static/js/677.b223e2a4.chunk.js": "/the-accounter-task/static/js/677.b223e2a4.chunk.js",
+    "static/js/677.873328bc.chunk.js": "/the-accounter-task/static/js/677.873328bc.chunk.js",
     "static/css/524.3ed8c070.chunk.css": "/the-accounter-task/static/css/524.3ed8c070.chunk.css",
     "static/js/524.a86b0acd.chunk.js": "/the-accounter-task/static/js/524.a86b0acd.chunk.js",
     "static/js/787.5a83229f.chunk.js": "/the-accounter-task/static/js/787.5a83229f.chunk.js",
     "static/js/437.b4b1fe14.chunk.js": "/the-accounter-task/static/js/437.b4b1fe14.chunk.js",
     "index.html": "/the-accounter-task/index.html",
     "main.073c9b0a.css.map": "/the-accounter-task/static/css/main.073c9b0a.css.map",
-    "main.2ac1c6db.js.map": "/the-accounter-task/static/js/main.2ac1c6db.js.map",
+    "main.5fb729c5.js.map": "/the-accounter-task/static/js/main.5fb729c5.js.map",
     "677.8b5dd23e.chunk.css.map": "/the-accounter-task/static/css/677.8b5dd23e.chunk.css.map",
-    "677.b223e2a4.chunk.js.map": "/the-accounter-task/static/js/677.b223e2a4.chunk.js.map",
+    "677.873328bc.chunk.js.map": "/the-accounter-task/static/js/677.873328bc.chunk.js.map",
     "524.3ed8c070.chunk.css.map": "/the-accounter-task/static/css/524.3ed8c070.chunk.css.map",
     "524.a86b0acd.chunk.js.map": "/the-accounter-task/static/js/524.a86b0acd.chunk.js.map",
     "787.5a83229f.chunk.js.map": "/the-accounter-task/static/js/787.5a83229f.chunk.js.map",
@@ -20,6 +20,6 @@
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.2ac1c6db.js"
+    "static/js/main.5fb729c5.js"
   ]
 }
