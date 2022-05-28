@@ -46,7 +46,7 @@ export default function CurrencyList({ className, companyId }: Props) {
             const lowerCaseSearchText = searchText.toLowerCase();
             return (
               currency.name.toLowerCase().includes(lowerCaseSearchText) ||
-              currency.code.includes(lowerCaseSearchText)
+              currency.code.toLowerCase().includes(lowerCaseSearchText)
             );
           })
           .map((currency, index) => (
