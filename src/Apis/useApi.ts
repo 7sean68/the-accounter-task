@@ -3,23 +3,30 @@ import { useEffect, useState } from "react";
 
 export default function useApi<T>(apiCall: Promise<T>) {
   const [data, setData] = useState<T>();
-  const [loading, setLoading] = useState<boolean>();
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<AxiosError>();
   useEffect(() => {
+    const awaitedApi = apiCall;
     setData(undefined);
     setLoading(true);
     setError(undefined);
     apiCall
       .then((data) => {
-        setData(data);
-        setError(undefined);
+        if (awaitedApi === apiCall) {
+          setData(data);
+          setError(undefined);
+        }
       })
       .catch((ex: AxiosError) => {
-        setError(ex);
+        if(awaitedApi === apiCall) {
+          setError(ex);
+          setData(undefined);
+        }
       })
       .finally(() => {
-        setLoading(false);
-        setData(undefined);
+        if (awaitedApi === apiCall) {
+          setLoading(false);
+        }
       });
   }, [apiCall]);
   return { data, loading, error };

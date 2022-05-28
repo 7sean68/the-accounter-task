@@ -14,7 +14,10 @@ interface Props {
 export default function CurrencyList({ className, companyId }: Props) {
   const requestGroup = useMemo(() => new RequestGroup(), []);
   const currenciesPromise = useMemo(
-    () => requestGroup.getCurrencyList(companyId),
+    () => {
+      requestGroup.cancelAndReuse("unmounting or companyId changed");
+      return requestGroup.getCurrencyList(companyId)
+    },
     [requestGroup, companyId]
   );
   const { data, loading } = useApi(currenciesPromise);
@@ -23,9 +26,6 @@ export default function CurrencyList({ className, companyId }: Props) {
 
   useEffect(() => {
     setSelectedIndex(0);
-    return () => {
-      requestGroup.cancelAndReuse("unmounting or companyId changed");
-    };
   }, [requestGroup, companyId]);
 
   return (
